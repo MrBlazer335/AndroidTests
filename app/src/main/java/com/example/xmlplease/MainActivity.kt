@@ -4,8 +4,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -27,14 +29,12 @@ class MainActivity : AppCompatActivity() {
             button.setOnClickListener {
                 val userName = findViewById<EditText>(R.id.name).text.toString()
                 val weight = findViewById<EditText>(R.id.weight).text.toString()
+                val switch = findViewById<Switch>(R.id.maleOrFemale)
                 try {
                     if (userName.isNotEmpty() && weight.isNotEmpty()) {
-                        sharedPreferences!!.edit().putString("user_name", userName)
-                            .putString("user_weight", weight).apply()
-                        sharedPreferences!!.edit().putBoolean("firstrun", false).apply()
+                        registerUser(switch, sharedPreferences, userName, weight)
                         startActivity(Intent(this, MainScreen::class.java))
                     } else {
-                        // Запрос повторного ввода данных
                         Toast.makeText(this@MainActivity, "Введите имя и вес", Toast.LENGTH_SHORT)
                             .show()
                     }
@@ -51,6 +51,23 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             startActivity(Intent(this, MainScreen::class.java))
+        }
+    }
+
+    fun registerUser(
+        switch: Switch,
+        sharedPreferences: SharedPreferences?,
+        userName: String,
+        weight: String
+    ) {
+        if (switch.isChecked) {
+            sharedPreferences!!.edit().putString("user_name", userName)
+                .putString("user_weight", weight).putString("gender", "female").apply()
+            sharedPreferences!!.edit().putBoolean("firstrun", false).apply()
+        } else {
+            sharedPreferences!!.edit().putString("user_name", userName)
+                .putString("user_weight", weight).putString("gender", "male").apply()
+            sharedPreferences!!.edit().putBoolean("firstrun", false).apply()
         }
     }
 }
