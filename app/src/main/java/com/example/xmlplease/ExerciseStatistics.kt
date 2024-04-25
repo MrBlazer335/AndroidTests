@@ -22,6 +22,7 @@ class ExerciseStatistics(private val context: Context) {
         textViewTotalReps.text = "Всего выполнено повторений: $totalReps"
         textViewTotalReps.textSize = 18f
         layout.addView(textViewTotalReps)
+        textViewTotalReps.tag = "totalReps"
 
         val exercisesJson = sharedPreferences.getString("exercises", "[]")
         try {

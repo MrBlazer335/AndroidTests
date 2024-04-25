@@ -2,14 +2,18 @@ package com.example.xmlplease
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.widget.TextView
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.DrawerActions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -33,8 +37,7 @@ class StatisticsScreenTest {
 
     @Test
     fun checkStatistics() {
-        Espresso.onView(ViewMatchers.withId(R.id.textViewReps))
-            .check(ViewAssertions.matches(ViewMatchers.withText("10")))
-
+        Espresso.onView(ViewMatchers.withTagValue(equalTo("totalReps")))
+            .check(ViewAssertions.matches(ViewMatchers.withText("Всего выполнено повторений: 10")))
     }
 }
