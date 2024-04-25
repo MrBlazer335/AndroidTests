@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewTargetWater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Норма воды (л):"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewCurrentWater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTargetWater"
+        android:layout_marginTop="8dp"
+        android:text="Выпито сегодня (л):"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editTextWaterInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewCurrentWater"
+        android:layout_marginTop="8dp"
+        android:inputType="numberDecimal"
+        android:hint="Введите количество выпитой воды (л)" />
+
+    <Button
+        android:id="@+id/buttonSaveWater"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сохранить"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/buttonResetWater"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сбросить"
+        android:layout_above="@id/buttonSaveWater"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>

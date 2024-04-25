@@ -1,8 +1,10 @@
 package com.example.xmlplease
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.Switch
 import android.widget.Toast
@@ -15,11 +17,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
         sharedPreferences = getSharedPreferences("com.example.xmlplease", MODE_PRIVATE)
 
     }
 
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onResume() {
         super.onResume()
 
@@ -28,10 +31,12 @@ class MainActivity : AppCompatActivity() {
             val button = findViewById<FloatingActionButton>(R.id.saveButton)
             button.setOnClickListener {
                 val userName = findViewById<EditText>(R.id.name).text.toString()
-                val weight = findViewById<EditText>(R.id.weight).text.toString()
+                val weightText = findViewById<EditText>(R.id.weight).text.toString()
+                val weight = weightText.toFloatOrNull() ?: 0f
+
                 val switch = findViewById<Switch>(R.id.maleOrFemale)
                 try {
-                    if (userName.isNotEmpty() && weight.isNotEmpty()) {
+                    if (userName.isNotEmpty() && weight > 0) {
                         registerUser(switch, sharedPreferences, userName, weight)
                         startActivity(Intent(this, MainScreen::class.java))
                     } else {
@@ -55,20 +60,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun registerUser(
-        switch: Switch,
+        @SuppressLint("UseSwitchCompatOrMaterialCode") switch: Switch,
         sharedPreferences: SharedPreferences?,
         userName: String,
-        weight: String
+        weight: Float
     ) {
         if (switch.isChecked) {
             sharedPreferences!!.edit().putString("user_name", userName)
-                .putString("user_weight", weight).putString("gender", "female").apply()
-            sharedPreferences!!.edit().putBoolean("firstrun", false).apply()
+                .putFloat("user_weight", weight).putString("gender", "female").apply()
+            sharedPreferences.edit().putBoolean("firstrun", false).apply()
         } else {
             sharedPreferences!!.edit().putString("user_name", userName)
-                .putString("user_weight", weight).putString("gender", "male").apply()
-            sharedPreferences!!.edit().putBoolean("firstrun", false).apply()
+                .putFloat("user_weight", weight).putString("gender", "male").apply()
+            sharedPreferences.edit().putBoolean("firstrun", false).apply()
         }
+
     }
 }
 

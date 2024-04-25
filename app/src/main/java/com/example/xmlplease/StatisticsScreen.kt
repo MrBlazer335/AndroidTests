@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 
-class StatisticsActivity : AppCompatActivity() {
+class StatisticsScreen : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var exerciseStatistics: ExerciseStatistics
 

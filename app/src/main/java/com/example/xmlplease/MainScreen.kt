@@ -34,22 +34,30 @@ class MainScreen : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val navigationView = findViewById<NavigationView>(R.id.navigation_view_main_screen)
-        navigationView.setNavigationItemSelectedListener {
-            menuItem ->
-            when(menuItem.itemId){
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
                 R.id.nav_settings -> {
-                    sharedPreferences!!.edit().putBoolean("firstrun",true).apply()
-                    startActivity(Intent(this,MainActivity::class.java))
-                    true}
-                R.id.nav_physics ->{
-                    startActivity(Intent(this,PhysicsScreen::class.java))
+                    sharedPreferences!!.edit().putBoolean("firstrun", true).apply()
+                    startActivity(Intent(this, MainActivity::class.java))
                     true
                 }
-                R.id.statistics ->{
-                    startActivity(Intent(this,StatisticsActivity::class.java))
+
+                R.id.nav_physics -> {
+                    startActivity(Intent(this, PhysicsScreen::class.java))
                     true
                 }
-                 else -> false
+
+                R.id.statistics -> {
+                    startActivity(Intent(this, StatisticsScreen::class.java))
+                    true
+                }
+
+                R.id.nav_whater -> {
+                    startActivity(Intent(this,WaterScreen::class.java))
+                    true
+                }
+
+                else -> false
             }
         }
     }
