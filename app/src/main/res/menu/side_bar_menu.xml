@@ -12,7 +12,10 @@
         android:id="@+id/nav_physics"
         android:icon="@drawable/baseline_fitness_center_24"
         android:title="Физические упражнения" />
-
+    <item
+        android:id="@+id/statistics"
+        android:icon="@drawable/baseline_auto_awesome_24"
+        android:title="Статистика"/>
 
 
 </menu>

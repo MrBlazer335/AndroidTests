@@ -40,8 +40,16 @@ class MainScreen : AppCompatActivity() {
                 R.id.nav_settings -> {
                     sharedPreferences!!.edit().putBoolean("firstrun",true).apply()
                     startActivity(Intent(this,MainActivity::class.java))
+                    true}
+                R.id.nav_physics ->{
+                    startActivity(Intent(this,PhysicsScreen::class.java))
                     true
-                } else -> false
+                }
+                R.id.statistics ->{
+                    startActivity(Intent(this,StatisticsActivity::class.java))
+                    true
+                }
+                 else -> false
             }
         }
     }

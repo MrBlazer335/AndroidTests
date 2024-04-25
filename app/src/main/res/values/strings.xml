@@ -2,4 +2,11 @@
     <string name="app_name">XMLPlease</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string-array name="exercises">
+        <item>Приседания</item>
+        <item>Подтягивания</item>
+        <item>Отжимания</item>
+        <!-- Добавьте здесь другие упражнения -->
+    </string-array>
+
 </resources>
