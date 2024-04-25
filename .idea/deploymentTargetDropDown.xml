@@ -3,6 +3,9 @@
   <component name="deploymentTargetDropDown">
     <value>
       <entry key="All Tests">
+        <State />
+      </entry>
+      <entry key="app">
         <State>
           <runningDeviceTargetSelectedWithDropDown>
             <Target>
@@ -15,11 +18,7 @@
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-25T04:41:10.867309300Z" />
-        </State>
-      </entry>
-      <entry key="app">
-        <State>
+          <timeTargetWasSelectedWithDropDown value="2024-04-25T06:06:46.793369500Z" />
           <runningDeviceTargetsSelectedWithDialog>
             <Target>
               <type value="RUNNING_DEVICE_TARGET" />
